@@ -3,48 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identificación de Orden por Voz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Plano Arquitectónico SVG</title>
+    <style>
+        .svg-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Altura del contenedor del SVG en el 80% de la altura del viewport */
+            width: 100%; /* Ancho del contenedor del SVG al 100% del viewport */
+            margin: 0 auto; /* Centrar el contenedor horizontalmente */
+            overflow: auto; /* Agregar desplazamiento si el contenido es más grande que la ventana */
+        }
+        .svg-container svg {
+            max-width: 100%; /* Ancho máximo del SVG al 100% del contenedor */
+            max-height: 100%; /* Altura automática para mantener la proporción */
+            border: 1px solid black; /* Añadido para visualización */
+        }
+    </style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Monitoreo de dispositivos</a>
+    </nav>
+    <div class="svg-container">
+        <svg viewBox="0 0 800 400">
+            <!-- Jardin Verde  -->
+            <rect x="1%" y="1%" width="75%" height="37.5%" fill="#6cfe0b" stroke="black" stroke-width="2"/>  <text x="2.5%" y="5%">Jardín</text>
+            <!-- Sala Rosa  -->
+            <rect x="74%" y="1%" width="25%" height="60%" fill="#fe2ade" stroke="black" stroke-width="2"/> <text x="75%" y="5%">Sala</text>
+            <!-- Habitación Naranja -->
+            <rect x="1%" y="38.5%" width="33.33%" height="37.5%" fill="#fe742a" stroke="black" stroke-width="2"/> <text x="2.5%" y="42.5%">Habitación</text>
+            <!-- Comedor Gris-->
+            <rect x="33.33%" y="38.5%" width="40.66%" height="37.5%" fill="#ccc" stroke="black" stroke-width="2"/> <text x="48.5%" y="42.5%">Comedor</text>
+            <!-- Baño Amarillo -->
+            <rect x="33.33%" y="38.5%" width="15%" height="25%" fill="#feec2a" stroke="black" stroke-width="2"/><text x="33.5%" y="42.5%">Baño</text>
+            <!-- Recibidor Morado -->
+            <rect x="74%" y="61%" width="25%" height="25%" fill="#ac71fe" stroke="black" stroke-width="2"/><text x="75%" y="64.5%">Recibidor</text>
+           
+            <!-- Puerta Jardín - Habitación -->
+            <rect x="18%" y="38%" width="6%" height="1%" fill="#ffffff"/>
+            <!-- Puerta Jardín - Sala -->
+            <rect x="73.7%" y="23%" width="0.5%" height="10%" fill="#ffffff"/>
+            <!-- Puerta Sala - Comedor -->
+            <rect x="73.7%" y="45%" width="0.5%" height="10%" fill="#ffffff"/>
+            <!-- Puerta Baño -->
+            <rect x="35%" y="63%" width="6%" height="1%" fill="#ffffff"/>
+            <!-- Puerta recibidor -->
+            <rect x="35%" y="63%" width="6%" height="1%" fill="#ffffff"/>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Identificación de Orden</a>
-</nav>
-<center>
-<div class="container mt-5">
-    <!--<button id="startRecognition" class="btn btn-primary">Activar Reconocimiento de Voz</button>-->
-    <div id="orderResult" class="mt-3"></div>
-    <div id="" class="mt-3"><p>Tamaño 5 - Cambia el tamaño del texto inferior</p></div>
-    <div id="" class="mt-3"><p>Abrir Facebook - Abre la pagina de Facebook</p></div>
-    <div id="" class="mt-3"><p>Abre nueva pestaña - Abre una pestaña en blanco</p></div>
-    <div id="" class="mt-3"><p>Cerrar pestaña actual - Cierra la pestaña actual</p></div>
-    <div id="" class="mt-3"><p>Cerrar Navegador - Cierra completamente el navegador</p></div>
-</div>
-
-<div class="container mt-5">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <span class="fs-1 fw-bold fst-italic" id="controlTexto">Hola</span>
-=======
-    <span class="fs-1 fw-bold fst-italic" id="controlTexto">Texto Modificable</span>
->>>>>>> 9f95a32 (Update index.html rezisable text)
-=======
-    <span class="fs-1 fw-bold fst-italic" id="controlTexto">Texto de ejemplo</span>
->>>>>>> 5b6d11a (qr code for remote app added)
-</div>
-
-                <img src="assets/qr remote.png" width="10%" lenght="10%">
-             
-</center>
-<br>
-<footer class="footer mt-auto py-3 bg-dark text-white">
-    <div class="container text-center">
-        <span>Derechos Reservados © 2024</span>
+           
+            <!-- Agregar imágenes -->
+            <foreignObject x="0%" y="13%" width="31%" height="35%">
+                <img src="imagen1.jpg" width="100%" height="100%" />
+            </foreignObject>
+            <foreignObject x="51%" y="13%" width="39%" height="47%">
+                <img src="imagen2.jpg" width="100%" height="100%" />
+            </foreignObject>
+            <foreignObject x="16%" y="63%" width="31%" height="22%">
+                <img src="imagen3.jpg" width="100%" height="100%" />
+            </foreignObject>
+        </svg>
     </div>
-</footer>
-
-<script src="assets/js/script_2.js"></script>
+    
 </body>
 </html>
