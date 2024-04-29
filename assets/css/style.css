@@ -1,0 +1,22 @@
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    /* Altura del contenedor del SVG en el 80% de la altura del viewport */
+    width: 100%;
+    /* Ancho del contenedor del SVG al 100% del viewport */
+    margin: 0 auto;
+    /* Centrar el contenedor horizontalmente */
+    overflow: auto;
+    /* Agregar desplazamiento si el contenido es más grande que la ventana */
+}
+
+.svg-container svg {
+    max-width: 100%;
+    /* Ancho máximo del SVG al 100% del contenedor */
+    max-height: 100%;
+    /* Altura automática para mantener la proporción */
+    /*border: 1px solid black;
+     Añadido para visualización */
+}

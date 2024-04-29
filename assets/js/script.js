@@ -26,37 +26,21 @@ document.addEventListener('DOMContentLoaded', function () {
     var boton = document.getElementById("miBoton");
 
     // Agrega un evento de clic al botón
-    boton.addEventListener("click", function() {
+    boton.addEventListener("click", function () {
         // Aquí llama a la función que deseas ejecutar
         main();
     });
 
-    // Funcon que se repite cada 4 segundos para actualizar la informacion de la orden
-    // Se hace uso de la funcion getJson para obtener la informacion de MockApi
-
     function main() {
-    getJson("https://662f095743b6a7dce30e4068.mockapi.io/status/1")
-        .then(data => {
-            //Si la promesa se cumple se imprime el valor obtenido en consola y en la pagina
-            console.log(data);
-            //Ejecucion de metodo que ejecuta la funcion basado en el texto proporcionado
-
-            const segundoElemento = data.alarm;
-            console.log(segundoElemento);
-
-            checkStatus(data);
-
-        })
-        .catch(error => {
-            console.error('Error al obtener o procesar los datos:', error);
-        });
-
+        getJson("https://662f095743b6a7dce30e4068.mockapi.io/status/1")
+            .then(data => {
+                checkStatus(data);
+            })
+            .catch(error => {
+                console.error('Error al obtener o procesar los datos:', error);
+            });
     }
 
-    //Ejecucion del codigo main cada 4 segundos
-    //setInterval(main, 4000);
-
-    // Funcion para obtiene el valor del json
     function getJson(url) {
         // La función trabaja con promesas para asegurar que los datos se obtengan antes de ser usados
         return new Promise((resolve, reject) => {
@@ -139,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
             imgCur2.src = "assets/img/curtain-close.svg";
             imgCur3.src = "assets/img/curtain-close.svg";
         }
-        
+
         if (camera === 1) {
             // Realizar acción cuando la habitación está encendida
             imgCam1.src = "assets/img/camera-on.svg";
@@ -168,8 +152,4 @@ document.addEventListener('DOMContentLoaded', function () {
             imgGar5.src = "assets/img/light-off.svg";
         }
     }
-
-  
-    //Funcion que imita el comportamiento de las condiciones en el codigo principal
-
 });
