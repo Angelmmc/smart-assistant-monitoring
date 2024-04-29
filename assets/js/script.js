@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var livingRoom = json.livingRoom
         var garden = json.garden
         var fan = json.fan
-        var curtain = json.room
+        var curtain = json.curtain
         var alarm = json.alarm
         var camera = json.camera
 
