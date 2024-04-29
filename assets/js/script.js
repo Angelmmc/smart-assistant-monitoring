@@ -1,139 +1,85 @@
 document.addEventListener('DOMContentLoaded', function () {
-    //Definicion de elementos a modificar en el programa
-    const startRecognitionBtn = document.getElementById('startRecognition');
-    const orderResultDiv = document.getElementById('orderResult');
+    // Definicion de elementos a modificar en el programa
+    var orden = document.getElementById("orden");
+    var edit = document.getElementById("editable");
 
-    const controlTexto = document.getElementById("controlTexto");
+    var imgGar1 = document.getElementById('light-garden-1');
+    var imgGar2 = document.getElementById('light-garden-2');
+    var imgGar3 = document.getElementById('light-garden-3');
+    var imgGar4 = document.getElementById('light-garden-4');
+    var imgGar5 = document.getElementById('light-garden-5');
 
-    //Metodo asincrono para escuchar el reconocimiento de texto
+    var imgCam1 = document.getElementById('camera-1');
+    var imgCam2 = document.getElementById('camera-2');
+    var imgCam3 = document.getElementById('camera-3');
 
-    startRecognitionBtn.addEventListener('click', function () {
-        // Comprobar si el navegador soporta reconocimiento de voz
-        if ('webkitSpeechRecognition' in window) {
-            const recognition = new webkitSpeechRecognition();
-            recognition.lang = 'es-ES'; // Establecer el idioma a español
+    var imgCur1 = document.getElementById('curtain-1');
+    var imgCur2 = document.getElementById('curtain-2');
+    var imgCur3 = document.getElementById('curtain-3');
 
-            // Configurar evento de resultado
-            recognition.onresult = function (event) {
-                const result = event.results[0][0].transcript;
+    var imgLivingRoom = document.getElementById('light-living-room');
+    var imgRoom = document.getElementById('light-room');
 
-                console.log('Orden identificada:', result);
+    var imgFan = document.getElementById('fan');
+    var imgAlarm = document.getElementById('alarm');
 
-                switch (true) {
-                    //Cambia el tamaño del texto al 5 de bootstrap al decir "tamaño 5"
-                    case result.includes("tamaño 5"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        controlTexto.innerHTML = '<span class="fs-5 fw-bold fst-italic">Texto Modificable</span>';
-                        //Metodo que inserta la acción realizada y fecha en MockApi
-                        insertarJson("Cambiar tamaño de texto");
-                        break;
+    // Funcon que se repite cada 4 segundos para actualizar la informacion de la orden
+    // Se hace uso de la funcion getJson para obtener la informacion de MockApi
 
-                    //Abre facebook al decir "Abre Facebook"
-                    case result.includes("Abre Facebook"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        insertarJson("Abrir facebook");
-                        window.open('https://www.facebook.com/');
-                        break;
+    //function main() {
+    getJson("https://662f095743b6a7dce30e4068.mockapi.io/status/1")
+        .then(data => {
+            //Si la promesa se cumple se imprime el valor obtenido en consola y en la pagina
+            console.log(data);
+            //Ejecucion de metodo que ejecuta la funcion basado en el texto proporcionado
 
-                    //Abre una pestaña vacia en el navegador
-                    case result.includes("Abre nueva pestaña"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        insertarJson("Abrir pestaña en blanco");
-                        window.open('');
-                        break;
+            const segundoElemento = data.alarm;
+            console.log(segundoElemento);
 
-                    //Cierra la pestaña actual
-                    case result.includes("Cerrar pestaña actual"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        //Operacion asincrona para insertar en Json ya que si no la ventana se cierra antes de insertar la informacion Json
-                        insertarJson("Cerrar pestaña actual").then(() => {
-                            window.close();
-                        })
-                            .catch(error => {
-                                console.error('Error al insertar JSON:', error);
-                            });
-                        break;
+            checkStatus(data);
 
-                    case result.includes("cerrar navegador"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        //Operacion asincrona para insertar en Json ya que si no la ventana se cierra antes de insertar la informacion Json
-                        insertarJson('Cerrar navegador')
-                            .then(() => {
-                                window.open('', '_self').close();
-                            })
-                            .catch(error => {
-                                console.error('Error al insertar JSON:', error);
-                            });
-                        break;
+        })
+        .catch(error => {
+            console.error('Error al obtener o procesar los datos:', error);
+        });
 
+    //}
 
-                    default:
-                        orderResultDiv.innerHTML = `<p>Orden desconocida, intenta de nuevo</p>`;
-                        break;
-                }
+    //Ejecucion del codigo main cada 4 segundos
+    //setInterval(main, 4000);
 
-            };
-
-            // Iniciar reconocimiento
-            recognition.start();
-        } else {
-            alert('El reconocimiento de voz no es soportado por este navegador.');
-        }
-    });
-
-    //Funcion para guarda ordenes o acciones realizadas de acuerdo a la accion definida en el parametro
-
-    function insertarJson(accion) {
-        //La funcion trabaja con promesas para asegurar que los datos se inserten antes de que se realice la acción ya que si no
-        //al cerrar una ventana esto ocurrira antes de que se envien los datos a MockApi
+    // Funcion para obtiene el valor del json
+    function getJson(url) {
+        // La función trabaja con promesas para asegurar que los datos se obtengan antes de ser usados
         return new Promise((resolve, reject) => {
-            //Definicion de la fecha actual formateandola al formato local de la PC
-            const fechaHoraActual = new Date();
-            const fechaHoraFormateada = fechaHoraActual.toLocaleString();
-
-            //Se crea un objeto que almacena la fecha obtenida y la accion del parametro
-            const recurso = {
-                id: 1,
-                accion: accion,
-                fecha: fechaHoraFormateada
-            };
-
-            // Se confierte el objeto a JSON
-            const recursoJSON = JSON.stringify(recurso);
-
-            // Se envia la solicitud HTTP a MockAPi usando el metodo POST, cabecera que indica que es Json y el cuerpo del json del objeto
-            fetch('https://660b0491ccda4cbc75dc4478.mockapi.io/accion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: recursoJSON
-            })
-            //Operacion asincrona en la que se espera a la respuesta de MockApi, si esta es invalida se indica que no se subio el archivo
+            // Se envía la solicitud HTTP a MockAPI usando el método GET por defecto
+            fetch(url)
+                // Operación asíncrona en la que se espera a la respuesta de MockApi
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Error al subir el recurso');
+                        throw new Error('Error al obtener los datos');
                     }
                     return response.json();
                 })
-                //Operacion asincrona en la que si la informacion se subio correctamente se devuelve a la consola y la promesa se resuelve
+                // Operación asíncrona en la que se devuelve el arreglo completo a la resolución de la promesa
                 .then(data => {
-                    console.log('Recurso subido exitosamente:', data);
                     resolve(data);
                 })
-                //Operacion asincrona en la que si la informacion no subio correctamente se devuelve un error en la consola y se rechaza la promesa
+                // Operación asíncrona en la que si ocurre algún error se maneja
                 .catch(error => {
                     console.error('Error:', error);
                     reject(error);
                 });
         });
     }
+
+    function checkStatus(json) {
+        console.log("aqui te va chaval");
+        console.log(json.alarm);
+
+    }
+
+
+    //Funcion que imita el comportamiento de las condiciones en el codigo principal
+
 });
-
-
-/*
-Set interval 
-
-problema: el set interval tiene una duracion fija de reiniciar una funcion, como hacer que la duracion se adapte hasta que se termine de decirl la orden
-usar recognition.continue para que este a la escucha como alexa
-*/
