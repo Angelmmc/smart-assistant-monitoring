@@ -128,6 +128,30 @@ document.addEventListener('DOMContentLoaded', function () {
             imgAlarm.src = "assets/img/alarm-off.svg";
         }
 
+        if (curtain === 1) {
+            // Realizar acción cuando la habitación está encendida
+            imgCur1.src = "assets/img/curtain-open.svg";
+            imgCur2.src = "assets/img/curtain-open.svg";
+            imgCur3.src = "assets/img/curtain-open.svg";
+        } else {
+            // Realizar acción cuando la habitación está apagada
+            imgCur1.src = "assets/img/curtain-close.svg";
+            imgCur2.src = "assets/img/curtain-close.svg";
+            imgCur3.src = "assets/img/curtain-close.svg";
+        }
+        
+        if (camera === 1) {
+            // Realizar acción cuando la habitación está encendida
+            imgCam1.src = "assets/img/camera-on.svg";
+            imgCam2.src = "assets/img/camera-on.svg";
+            imgCam3.src = "assets/img/camera-on.svg";
+        } else {
+            // Realizar acción cuando la habitación está apagada
+            imgCam1.src = "assets/img/camera-off.svg";
+            imgCam2.src = "assets/img/camera-off.svg";
+            imgCam3.src = "assets/img/camera-off.svg";
+        }
+
         if (garden === 1) {
             // Realizar acción cuando la habitación está encendida
             imgGar1.src = "assets/img/light-on.svg";
@@ -143,10 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
             imgGar4.src = "assets/img/light-off.svg";
             imgGar5.src = "assets/img/light-off.svg";
         }
-
-        
-        
-
     }
 
   
