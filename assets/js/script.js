@@ -31,20 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
         main();
     });
 
-   // Definir la función asíncrona que quieres ejecutar repetidamente
-async function main() {
-    try {
-        const data = await getJson("https://662f095743b6a7dce30e4068.mockapi.io/status/1");
-        checkStatus(data);
-    } catch (error) {
-        console.error('Error al obtener o procesar los datos:', error);
+    function main() {
+        getJson("https://662f095743b6a7dce30e4068.mockapi.io/status/1")
+            .then(data => {
+                checkStatus(data);
+            })
+            .catch(error => {
+                console.error('Error al obtener o procesar los datos:', error);
+            });
     }
-}
-
-// Llamar a setInterval para ejecutar la función principal cada 5 segundos
-setInterval(main, 5000);
-
-    
 
     function getJson(url) {
         // La función trabaja con promesas para asegurar que los datos se obtengan antes de ser usados
@@ -70,8 +65,6 @@ setInterval(main, 5000);
         });
     }
 
-    let flag = 0
-    
     function checkStatus(json) {
 
         var room = json.room
@@ -81,7 +74,6 @@ setInterval(main, 5000);
         var curtain = json.curtain
         var alarm = json.alarm
         var camera = json.camera
-       
 
         const audioOn = new Audio("assets/sound/alarm-on.mp3");
         const audioOff = new Audio("assets/sound/alarm-off.mp3");
@@ -111,18 +103,12 @@ setInterval(main, 5000);
         }
 
         if (alarm === 1) {
-            if(flag == 0){
             // Realizar acción cuando la habitación está encendida
             audioOn.play();
-            flag = 1;
-            }
             imgAlarm.src = "assets/img/alarm-on.svg";
         } else {
             // Realizar acción cuando la habitación está apagada
-            if(flag == 0){
             audioOff.play();
-            flag = 1;
-            }
             imgAlarm.src = "assets/img/alarm-off.svg";
         }
 
