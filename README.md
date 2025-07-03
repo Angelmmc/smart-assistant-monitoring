@@ -1,14 +1,41 @@
-# web-app-smart-assistant-remote
-> Esta aplicacion reconoce distintas ordenes por medio de voz y posteriormente inserta la información de la petición en una API en MockApi.
+# smart-assistant-monitoring
 
-Para usar la aplicación se necesita insertar alguno de los siguientes comandos:
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/Angelmmc/smart-assistant-monitoring.svg)](https://github.com/Angelmmc/smart-assistant-monitoring/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/Angelmmc/smart-assistant-monitoring.svg)](https://github.com/Angelmmc/smart-assistant-monitoring/issues)
 
- - Tamaño 5 - Cambia el tamaño del texto inferior
-  - Abre Facebook - Abre la pagina de Facebook
-   - Abre nueva pestaña - Abre una pestaña en blanco
-    - Cerrar pestaña actual - Cierra la pestaña actual
-   - Cerrar Navegador - Cierra completamente el navegador
+## About 
+This web page provides a visual simulation of a smart house. It displays a floor plan of the home along with various smart devices placed throughout the layout. Users can interact with the simulation to see how voice commands affect the state of these devices, offering a simple and intuitive way to understand how the smart assistant controls the environment.
 
-La información puede comprobarse en la siguiente dirección.
+##  Getting Started
 
-https://660b0491ccda4cbc75dc4478.mockapi.io/accion
+###  Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/Angelmmc/smart-assistant-monitoring.git
+```
+2. Navigate to the project folder
+```bash
+cd smart-assistant-monitoring
+```
+3. Run the index.html file
+   
+## Usage
+
+1.  Use the refresh button to get the latest state of the smart devices.
+2.  To control the smart house use the smar-assistant-voice repository located on the related section.
+
+## Screenshot
+
+<img src="https://github.com/Angelmmc/smart-assistant-monitoring/blob/main/assets/img/main_page.png" alt="App Screen" width="500"/>
+
+## License
+Distributed under the MIT License. See LICENSE for more information.
+
+## Related
+
+Check out the related repositories for my smart assistant project.
+
+[![iot-car-webapp](https://img.shields.io/badge/smart_assistant-voice-e48b01?logo=github)](https://github.com/Angelmmc/smart-assistant-voice)
+
