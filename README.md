@@ -28,7 +28,7 @@ cd smart-assistant-monitoring
 
 ## Screenshot
 
-<img src="https://github.com/Angelmmc/smart-assistant-monitoring/blob/main/assets/img/main_page_monitoring.png" alt="App Screen" width="500"/>
+<img src="https://github.com/Angelmmc/smart-assistant-monitoring/blob/main/assets/img/main_page_monitoring.png" alt="App Screen" width="700"/>
 
 ## License
 Distributed under the MIT License. See LICENSE for more information.
