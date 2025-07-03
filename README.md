@@ -1,4 +1,4 @@
-# web-app-voice-revenge
+# web-app-smart-assistant-remote
 > Esta aplicacion reconoce distintas ordenes por medio de voz y posteriormente inserta la información de la petición en una API en MockApi.
 
 Para usar la aplicación se necesita insertar alguno de los siguientes comandos:
